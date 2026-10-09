@@ -735,8 +735,9 @@ HOW_TO_USE = [
     ("heading", "Each row is self-contained"),
     ("text", "Start every row in a fresh browser session and open the URL at the start of WhatToDo. "
              "No row depends on data from another row, so rows can run in any order."),
-    ("text", "Rows that test login or the one-time code use the real login. All other rows start on a signed-in page "
-             "with ?as=tester in the URL. That is a test shortcut that signs in tester@northwind.test straight away."),
+    ("text", "Rows that test login or the one-time code use the real login, and the Access control row starts signed out on purpose. "
+             "All other rows start on a signed-in page with ?as=tester in the URL. That is a test shortcut that signs in "
+             "tester@northwind.test straight away."),
     ("text", "Mark a row Pass only if everything in ExpectedResult is true. Otherwise mark it Fail and describe what you saw in Notes."),
     ("heading", "Test accounts"),
     ("text", "tester@northwind.test / Test@1234: normal user. locked@northwind.test / Test@1234: locked account. One-time code: 123456."),

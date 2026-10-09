@@ -492,7 +492,7 @@ async function main() {
   if (liveIndex !== -1) {
     const live = process.argv[liveIndex + 1].replace(/\/+$/, '');
     allowedHosts.add(new URL(live).hostname);
-    const useEdge = runs.some(function (r) { return r.label.indexOf('Edge') === 0; });
+    const useEdge = runs.some(function (r) { return r.label.indexOf('Microsoft Edge') === 0; });
     runs.push(await runBrowser(playwright.chromium, useEdge ? { channel: 'msedge' } : {}, (useEdge ? 'Microsoft Edge' : 'Chromium') + ' (live GitHub Pages)', live));
   }
 

@@ -1,8 +1,8 @@
 # Northwind Stays verification report
 
-Generated 2026-10-09 03:21 UTC by `node verify/verify.js` against a local static server serving `docs/`. Viewport 1280x800, one fresh browser context per row.
+Generated 2026-10-09 03:27 UTC by `node verify/verify.js` against a local static server serving `docs/` and against the live site at https://anishonly121.github.io/northwind-stays. Viewport 1280x800, one fresh browser context per row.
 
-Browsers: Chromium 149.0.7827.55, Microsoft Edge 154.0.4258.62. Playwright 1.61.0.
+Browsers: Chromium 149.0.7827.55, Microsoft Edge 154.0.4258.62, Microsoft Edge (live GitHub Pages) 154.0.4258.62. Playwright 1.61.0.
 
 **Overall result: PASS, every expectation holds**
 
@@ -18,6 +18,10 @@ Browsers: Chromium 149.0.7827.55, Microsoft Edge 154.0.4258.62. Playwright 1.61.
 | Microsoft Edge 154.0.4258.62: Build 1.1.0 sheet on v2 | only NW13, NW20, NW27 fail | 31/34 pass, failed: NW13, NW20, NW27, PASS |
 | Microsoft Edge 154.0.4258.62: smoke rows on v2 | all 6 pass | 6/6 pass, PASS |
 | Microsoft Edge 154.0.4258.62: new feature rows on v2 | all 4 pass | 4/4 pass, PASS |
+| Microsoft Edge (live GitHub Pages) 154.0.4258.62: Build 1.0.0 sheet on v1 | all 34 rows pass | 34/34 pass, PASS |
+| Microsoft Edge (live GitHub Pages) 154.0.4258.62: Build 1.1.0 sheet on v2 | only NW13, NW20, NW27 fail | 31/34 pass, failed: NW13, NW20, NW27, PASS |
+| Microsoft Edge (live GitHub Pages) 154.0.4258.62: smoke rows on v2 | all 6 pass | 6/6 pass, PASS |
+| Microsoft Edge (live GitHub Pages) 154.0.4258.62: new feature rows on v2 | all 4 pass | 4/4 pass, PASS |
 | Banner and build label on every page | 19 pages | 19/19 pass, PASS |
 | Requests to external domains | none | 0, PASS |
 | Revealing words, absolute URLs, alert(), randomness in deployed files | none in 26 files | 0 findings, PASS |
