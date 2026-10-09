@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-page="confirmation" data-auth="required">
+<head>
+  {{head}}
+  <title>Booking confirmed | Northwind Stays</title>
+</head>
+<body>
+{{banner}}
+{{header_app}}
+<main class="container page-narrow" id="main">
+  <p class="error" id="confirmation-error" data-testid="confirmation-error" role="alert" hidden></p>
+  <div id="confirmation-content" hidden>
+    <h1>Booking confirmed</h1>
+    <section class="panel summary">
+      <p class="reference" id="booking-reference" data-testid="booking-reference"></p>
+      <p class="summary-property" id="confirmation-property" data-testid="confirmation-property"></p>
+      <p id="confirmation-checkin" data-testid="confirmation-checkin"></p>
+      <p id="confirmation-checkout" data-testid="confirmation-checkout"></p>
+      <p id="confirmation-guests" data-testid="confirmation-guests"></p>
+      <p id="confirmation-nights" data-testid="confirmation-nights"></p>
+      <p id="confirmation-rooms" data-testid="confirmation-rooms"></p>
+      <p class="summary-total" id="confirmation-total" data-testid="confirmation-total"></p>
+      <p id="confirmation-payment" data-testid="confirmation-payment">Payment: Pay at property</p>
+    </section>
+    <p><a href="bookings.html" id="go-to-bookings" data-testid="go-to-bookings">Go to My bookings</a></p>
+  </div>
+</main>
+{{footer}}
+</body>
+</html>

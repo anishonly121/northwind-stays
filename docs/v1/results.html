@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-page="results" data-auth="required">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?b=1.0.0">
+  <script src="data.js?b=1.0.0"></script>
+  <script src="app.js?b=1.0.0"></script>
+  <title>Search results | Northwind Stays</title>
+</head>
+<body>
+<div class="test-banner" id="test-banner" data-testid="test-banner" role="note">Northwind Stays is a fictional test website for UAT practice. No real bookings, payments or personal data.</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" id="brand" href="search.html"><svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="#17496b"/><path d="M9.5 23V9.5l13 13V9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.5" fill="#f2b33d"/></svg><span class="brand-name">Northwind Stays</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <span class="signed-in" id="signed-in-as" data-testid="signed-in-as"></span>
+      <a href="search.html" id="nav-search" data-testid="nav-search">Search</a>
+      <a href="bookings.html" id="nav-bookings" data-testid="nav-bookings">My bookings</a>
+      <button type="button" class="btn btn-secondary btn-small" id="logout-button" data-testid="logout-button">Log out</button>
+    </nav>
+  </div>
+</header>
+<main class="container" id="main">
+  <h1>Search results</h1>
+  <p class="search-summary"><span id="search-summary" data-testid="search-summary"></span> <a href="search.html" class="change-search" id="change-search" data-testid="change-search">Change search</a></p>
+  <p class="error" id="results-error" data-testid="results-error" role="alert" hidden></p>
+  <div class="results-layout" id="results-layout">
+    <aside class="panel filters" aria-labelledby="filters-heading">
+      <h2 id="filters-heading">Filters</h2>
+      <form id="filter-form" data-testid="filter-form" autocomplete="off" novalidate>
+        <div class="price-row">
+          <div class="field">
+            <label for="filter-min-price">Min price per night (S$)</label>
+            <input id="filter-min-price" name="min-price" type="number" min="0" step="1" inputmode="numeric" autocomplete="off" data-testid="filter-min-price">
+          </div>
+          <div class="field">
+            <label for="filter-max-price">Max price per night (S$)</label>
+            <input id="filter-max-price" name="max-price" type="number" min="0" step="1" inputmode="numeric" autocomplete="off" data-testid="filter-max-price">
+          </div>
+        </div>
+        <fieldset>
+          <legend>Star rating</legend>
+          <div class="check-row">
+            <span class="check"><input type="checkbox" id="filter-star-3" value="3" data-filter-group="star" data-testid="filter-star-3"><label for="filter-star-3">3 stars</label></span>
+            <span class="check"><input type="checkbox" id="filter-star-4" value="4" data-filter-group="star" data-testid="filter-star-4"><label for="filter-star-4">4 stars</label></span>
+            <span class="check"><input type="checkbox" id="filter-star-5" value="5" data-filter-group="star" data-testid="filter-star-5"><label for="filter-star-5">5 stars</label></span>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Property type</legend>
+          <div class="check-row">
+            <span class="check"><input type="checkbox" id="filter-type-hotel" value="Hotel" data-filter-group="type" data-testid="filter-type-hotel"><label for="filter-type-hotel">Hotel</label></span>
+            <span class="check"><input type="checkbox" id="filter-type-serviced" value="Serviced apartment" data-filter-group="type" data-testid="filter-type-serviced"><label for="filter-type-serviced">Serviced apartment</label></span>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Amenities</legend>
+          <div class="check-grid">
+            <span class="check"><input type="checkbox" id="filter-amenity-pool" value="Pool" data-filter-group="amenity" data-testid="filter-amenity-pool"><label for="filter-amenity-pool">Pool</label></span>
+            <span class="check"><input type="checkbox" id="filter-amenity-gym" value="Gym" data-filter-group="amenity" data-testid="filter-amenity-gym"><label for="filter-amenity-gym">Gym</label></span>
+            <span class="check"><input type="checkbox" id="filter-amenity-breakfast" value="Breakfast included" data-filter-group="amenity" data-testid="filter-amenity-breakfast"><label for="filter-amenity-breakfast">Breakfast included</label></span>
+            <span class="check"><input type="checkbox" id="filter-amenity-wifi" value="Free Wi-Fi" data-filter-group="amenity" data-testid="filter-amenity-wifi"><label for="filter-amenity-wifi">Free Wi-Fi</label></span>
+            <span class="check"><input type="checkbox" id="filter-amenity-parking" value="Parking" data-filter-group="amenity" data-testid="filter-amenity-parking"><label for="filter-amenity-parking">Parking</label></span>
+            <span class="check"><input type="checkbox" id="filter-amenity-pets" value="Pet friendly" data-filter-group="amenity" data-testid="filter-amenity-pets"><label for="filter-amenity-pets">Pet friendly</label></span>
+          </div>
+        </fieldset>
+        <div class="actions">
+          <button type="submit" class="btn" id="apply-filters" data-testid="apply-filters">Apply filters</button>
+          <button type="button" class="btn btn-secondary" id="clear-filters" data-testid="clear-filters">Clear filters</button>
+        </div>
+      </form>
+    </aside>
+    <section class="results-main" aria-labelledby="result-count">
+      <div class="results-toolbar">
+        <p class="result-count" id="result-count" data-testid="result-count" role="status"></p>
+        <div class="field field-inline">
+          <label for="sort-by">Sort by</label>
+          <select id="sort-by" name="sort-by" data-testid="sort-by">
+            <option value="recommended" selected>Recommended</option>
+            <option value="price-asc">Price (low to high)</option>
+            <option value="price-desc">Price (high to low)</option>
+            <option value="rating-desc">Rating (high to low)</option>
+          </select>
+        </div>
+      </div>
+      <div class="results-list" id="results-list" data-testid="results-list"></div>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span class="build-label" id="build-label" data-testid="build-label">Build 1.0.0</span>
+    <a href="login.html?reset=1" id="reset-demo-data" data-testid="reset-demo-data">Reset demo data</a>
+  </div>
+</footer>
+</body>
+</html>

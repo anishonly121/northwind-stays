@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-page="book" data-auth="required">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?b=1.1.0">
+  <script src="data.js?b=1.1.0"></script>
+  <script src="app.js?b=1.1.0"></script>
+  <title>Complete your booking | Northwind Stays</title>
+</head>
+<body>
+<div class="test-banner" id="test-banner" data-testid="test-banner" role="note">Northwind Stays is a fictional test website for UAT practice. No real bookings, payments or personal data.</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" id="brand" href="search.html"><svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="#17496b"/><path d="M9.5 23V9.5l13 13V9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.5" fill="#f2b33d"/></svg><span class="brand-name">Northwind Stays</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <span class="signed-in" id="signed-in-as" data-testid="signed-in-as"></span>
+      <a href="search.html" id="nav-search" data-testid="nav-search">Search</a>
+      <a href="bookings.html" id="nav-bookings" data-testid="nav-bookings">My bookings</a>
+      <button type="button" class="btn btn-secondary btn-small" id="logout-button" data-testid="logout-button">Log out</button>
+    </nav>
+  </div>
+</header>
+<main class="container" id="main">
+  <h1>Complete your booking</h1>
+  <p class="error" id="book-error" data-testid="book-error" role="alert" hidden></p>
+  <div class="book-layout" id="book-content" hidden>
+    <form class="panel" id="booking-form" data-testid="booking-form" autocomplete="off" novalidate>
+      <h2>Guest details</h2>
+      <div class="field">
+        <label for="full-name">Full name</label>
+        <input id="full-name" name="full-name" type="text" autocomplete="off" spellcheck="false" data-testid="book-full-name">
+        <p class="error field-error" id="full-name-error" data-testid="full-name-error" hidden></p>
+      </div>
+      <div class="field">
+        <label for="guest-email">Email</label>
+        <input id="guest-email" name="guest-email" type="text" inputmode="email" autocomplete="off" spellcheck="false" data-testid="book-email">
+        <p class="error field-error" id="guest-email-error" data-testid="email-error" hidden></p>
+      </div>
+      <div class="field">
+        <label for="mobile">Mobile number (+65)</label>
+        <input id="mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="off" data-testid="book-mobile">
+        <p class="error field-error" id="mobile-error" data-testid="mobile-error" hidden></p>
+      </div>
+      <div class="field">
+        <label for="special-requests">Special requests (optional)</label>
+        <textarea id="special-requests" name="special-requests" rows="3" data-testid="book-special-requests"></textarea>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn" id="confirm-booking" data-testid="confirm-booking">Confirm booking</button>
+      </div>
+    </form>
+    <section class="panel summary" id="booking-summary" data-testid="booking-summary" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Booking summary</h2>
+      <p class="summary-property" id="summary-property" data-testid="summary-property"></p>
+      <p id="summary-price" data-testid="summary-price"></p>
+      <p id="summary-checkin" data-testid="summary-checkin"></p>
+      <p id="summary-checkout" data-testid="summary-checkout"></p>
+      <p id="summary-guests" data-testid="summary-guests"></p>
+      <p id="summary-nights" data-testid="summary-nights"></p>
+      <p id="summary-rooms" data-testid="summary-rooms"></p>
+      <p class="summary-total" id="summary-total" data-testid="summary-total"></p>
+      <p id="summary-payment" data-testid="summary-payment">Payment: Pay at property</p>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span class="build-label" id="build-label" data-testid="build-label">Build 1.1.0</span>
+    <a href="login.html?reset=1" id="reset-demo-data" data-testid="reset-demo-data">Reset demo data</a>
+  </div>
+</footer>
+</body>
+</html>

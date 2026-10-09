@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Northwind Stays test builds</title>
+  <style>
+    body { margin: 0; background: #f3f5f8; color: #1b2430; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; line-height: 1.5; }
+    .test-banner { background: #fff3c4; border-bottom: 2px solid #d9b84a; color: #3b2f00; font-weight: 600; text-align: center; padding: 8px 16px; font-size: 0.95rem; }
+    main { max-width: 760px; margin: 0 auto; padding: 8px 20px 40px; }
+    h1 { font-size: 1.9rem; margin: 24px 0 8px; display: flex; align-items: center; gap: 12px; }
+    h2 { font-size: 1.2rem; margin: 0 0 8px; }
+    .builds { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    .build { background: #fff; border: 1px solid #cfd6de; border-radius: 8px; padding: 18px; }
+    .btn { display: inline-block; background: #17496b; color: #fff; font-weight: 600; text-decoration: none; padding: 8px 18px; border-radius: 6px; }
+    .notes { background: #fff; border: 1px solid #cfd6de; border-radius: 8px; padding: 18px; }
+    code { background: #e8edf2; padding: 1px 5px; border-radius: 4px; }
+    table { border-collapse: collapse; margin: 8px 0 12px; }
+    th, td { border: 1px solid #cfd6de; padding: 6px 10px; text-align: left; }
+    @media (max-width: 640px) { .builds { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+{{banner}}
+<main>
+  <h1>{{logo}}Northwind Stays test builds</h1>
+  <p>Northwind Stays is a fictional hotel booking site used as a controlled target for user acceptance testing. Pick a build to test.</p>
+  <div class="builds">
+    <section class="build" id="build-v1" data-testid="build-v1">
+      <h2>Build 1.0.0</h2>
+      <p>The baseline release.</p>
+      <a class="btn" href="v1/login.html" id="open-v1" data-testid="open-v1">Open Build 1.0.0</a>
+    </section>
+    <section class="build" id="build-v2" data-testid="build-v2">
+      <h2>Build 1.1.0</h2>
+      <p>The latest release.</p>
+      <a class="btn" href="v2/login.html" id="open-v2" data-testid="open-v2">Open Build 1.1.0</a>
+    </section>
+  </div>
+  <section class="notes">
+    <h2>Test accounts</h2>
+    <table>
+      <thead><tr><th scope="col">Email</th><th scope="col">Password</th><th scope="col">Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td>tester@northwind.test</td><td>Test@1234</td><td>Normal user</td></tr>
+        <tr><td>locked@northwind.test</td><td>Test@1234</td><td>Locked</td></tr>
+      </tbody>
+    </table>
+    <p>The one-time code is always <code>123456</code>.</p>
+    <h2>Test shortcut</h2>
+    <p>Add <code>?as=tester</code> to the address of any signed-in page (search, results, details, book, confirmation or My bookings) to sign in as tester@northwind.test straight away, without the log in and one-time code steps.</p>
+    <p>All data is kept in this browser only. Use the <strong>Reset demo data</strong> link in the footer of any build to clear it.</p>
+  </section>
+</main>
+</body>
+</html>

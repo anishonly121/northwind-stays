@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-page="details" data-auth="required">
+<head>
+  {{head}}
+  <title>Property details | Northwind Stays</title>
+</head>
+<body>
+{{banner}}
+{{header_app}}
+<main class="container" id="main">
+  <p class="back-link"><a href="search.html" id="back-to-results" data-testid="back-to-results">Back to results</a></p>
+  <p class="error" id="details-error" data-testid="details-error" role="alert" hidden></p>
+  <div id="details-content" hidden>
+    <div class="details-head">
+      <div class="thumb thumb-large" id="property-thumb" data-testid="property-thumb" aria-hidden="true"></div>
+      <div>
+        <h1 id="property-name" data-testid="property-name"></h1>
+        <p class="meta"><span id="property-city" data-testid="property-city"></span> · <span id="property-type" data-testid="property-type"></span></p>
+        <p class="meta"><span id="property-stars" data-testid="property-stars"></span> · Guest rating <span id="property-rating" data-testid="property-rating"></span></p>
+        <p class="price price-large" id="property-price" data-testid="property-price"></p>
+        <!--#if v2-->
+        <p class="badges" id="property-badges" data-testid="property-badges"></p>
+        <!--#endif-->
+      </div>
+    </div>
+    <div class="details-layout">
+      <section class="panel">
+        <h2>About this property</h2>
+        <p id="property-description" data-testid="property-description"></p>
+        <p id="property-max-guests" data-testid="property-max-guests"></p>
+        <h3>Amenities</h3>
+        <ul class="amenity-list" id="property-amenities" data-testid="property-amenities"></ul>
+      </section>
+      <section class="panel" aria-labelledby="stay-heading">
+        <h2 id="stay-heading">Your stay</h2>
+        <p id="stay-checkin" data-testid="stay-checkin"></p>
+        <p id="stay-checkout" data-testid="stay-checkout"></p>
+        <p id="stay-nights" data-testid="stay-nights"></p>
+        <p id="stay-guests" data-testid="stay-guests"></p>
+        <p id="stay-rooms" data-testid="stay-rooms"></p>
+        <div class="actions">
+          <a class="btn" href="book.html" id="book-now" data-testid="book-now">Book now</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+{{footer}}
+</body>
+</html>

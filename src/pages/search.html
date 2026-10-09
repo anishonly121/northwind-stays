@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-page="search" data-auth="required">
+<head>
+  {{head}}
+  <title>Find a stay | Northwind Stays</title>
+</head>
+<body>
+{{banner}}
+{{header_app}}
+<main class="container" id="main">
+  <h1>Find a stay</h1>
+  <form class="panel search-form" id="search-form" data-testid="search-form" autocomplete="off" novalidate>
+    <div class="search-grid">
+      <div class="field field-wide">
+        <label for="city">City</label>
+        <select id="city" name="city" data-testid="search-city">
+          <option value="">All cities</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="checkin">Check-in (DD/MM/YYYY)</label>
+        <input id="checkin" name="checkin" type="text" autocomplete="off" spellcheck="false" data-testid="search-checkin">
+      </div>
+      <div class="field">
+        <label for="checkout">Check-out (DD/MM/YYYY)</label>
+        <input id="checkout" name="checkout" type="text" autocomplete="off" spellcheck="false" data-testid="search-checkout">
+      </div>
+      <div class="field">
+        <label for="guests">Guests</label>
+        <select id="guests" name="guests" data-testid="search-guests">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rooms">Rooms</label>
+        <select id="rooms" name="rooms" data-testid="search-rooms">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+    </div>
+    <p class="error" id="search-error" data-testid="search-error" role="alert" hidden></p>
+    <div class="actions">
+      <button type="submit" class="btn" id="search-button" data-testid="search-button">Search</button>
+    </div>
+  </form>
+</main>
+{{footer}}
+</body>
+</html>

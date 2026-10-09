@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-page="confirmation" data-auth="required">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?b=1.1.0">
+  <script src="data.js?b=1.1.0"></script>
+  <script src="app.js?b=1.1.0"></script>
+  <title>Booking confirmed | Northwind Stays</title>
+</head>
+<body>
+<div class="test-banner" id="test-banner" data-testid="test-banner" role="note">Northwind Stays is a fictional test website for UAT practice. No real bookings, payments or personal data.</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" id="brand" href="search.html"><svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="#17496b"/><path d="M9.5 23V9.5l13 13V9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.5" fill="#f2b33d"/></svg><span class="brand-name">Northwind Stays</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <span class="signed-in" id="signed-in-as" data-testid="signed-in-as"></span>
+      <a href="search.html" id="nav-search" data-testid="nav-search">Search</a>
+      <a href="bookings.html" id="nav-bookings" data-testid="nav-bookings">My bookings</a>
+      <button type="button" class="btn btn-secondary btn-small" id="logout-button" data-testid="logout-button">Log out</button>
+    </nav>
+  </div>
+</header>
+<main class="container page-narrow" id="main">
+  <p class="error" id="confirmation-error" data-testid="confirmation-error" role="alert" hidden></p>
+  <div id="confirmation-content" hidden>
+    <h1>Booking confirmed</h1>
+    <section class="panel summary">
+      <p class="reference" id="booking-reference" data-testid="booking-reference"></p>
+      <p class="summary-property" id="confirmation-property" data-testid="confirmation-property"></p>
+      <p id="confirmation-checkin" data-testid="confirmation-checkin"></p>
+      <p id="confirmation-checkout" data-testid="confirmation-checkout"></p>
+      <p id="confirmation-guests" data-testid="confirmation-guests"></p>
+      <p id="confirmation-nights" data-testid="confirmation-nights"></p>
+      <p id="confirmation-rooms" data-testid="confirmation-rooms"></p>
+      <p class="summary-total" id="confirmation-total" data-testid="confirmation-total"></p>
+      <p id="confirmation-payment" data-testid="confirmation-payment">Payment: Pay at property</p>
+    </section>
+    <p><a href="bookings.html" id="go-to-bookings" data-testid="go-to-bookings">Go to My bookings</a></p>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span class="build-label" id="build-label" data-testid="build-label">Build 1.1.0</span>
+    <a href="login.html?reset=1" id="reset-demo-data" data-testid="reset-demo-data">Reset demo data</a>
+  </div>
+</footer>
+</body>
+</html>

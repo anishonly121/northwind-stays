@@ -1,0 +1,1775 @@
+{
+  "baseUrl": "https://anishonly121.github.io/northwind-stays",
+  "core": [
+    {
+      "id": "NW01",
+      "feature": "Login and one-time code",
+      "smoke": true,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/login.html. Type tester@northwind.test into the Email field, type Test@1234 into the Password field, then click the Log in button. On the one-time code page, type 123456 into the One-time code field, then click the Verify button.",
+      "expectedResult": "After clicking Verify, the page heading is \"Find a stay\". \"Signed in as tester@northwind.test\" is shown on the page.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "login.html"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Password",
+          "value": "Test@1234"
+        },
+        {
+          "op": "click",
+          "name": "Log in",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        },
+        {
+          "op": "fill",
+          "label": "One-time code",
+          "value": "123456"
+        },
+        {
+          "op": "click",
+          "name": "Verify",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Find a stay"
+        },
+        {
+          "type": "shows",
+          "text": "Signed in as tester@northwind.test"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW02",
+      "feature": "Login",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/login.html. Type tester@northwind.test into the Email field, type Wrong@1234 into the Password field, then click the Log in button.",
+      "expectedResult": "\"Incorrect email or password.\" is shown on the page. The page heading is \"Log in to Northwind Stays\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "login.html"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Password",
+          "value": "Wrong@1234"
+        },
+        {
+          "op": "click",
+          "name": "Log in",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Incorrect email or password."
+        },
+        {
+          "type": "heading",
+          "text": "Log in to Northwind Stays"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW03",
+      "feature": "Login",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/login.html. Type locked@northwind.test into the Email field, type Test@1234 into the Password field, then click the Log in button.",
+      "expectedResult": "\"This account is locked. Please contact support.\" is shown on the page. The page heading is \"Log in to Northwind Stays\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "login.html"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "locked@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Password",
+          "value": "Test@1234"
+        },
+        {
+          "op": "click",
+          "name": "Log in",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "This account is locked. Please contact support."
+        },
+        {
+          "type": "heading",
+          "text": "Log in to Northwind Stays"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW04",
+      "feature": "One-time code",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/login.html. Type tester@northwind.test into the Email field, type Test@1234 into the Password field, then click the Log in button. On the one-time code page, type 654321 into the One-time code field, then click the Verify button.",
+      "expectedResult": "\"That code is incorrect. Please try again.\" is shown on the page. The page heading is \"Enter your one-time code\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "login.html"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Password",
+          "value": "Test@1234"
+        },
+        {
+          "op": "click",
+          "name": "Log in",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        },
+        {
+          "op": "fill",
+          "label": "One-time code",
+          "value": "654321"
+        },
+        {
+          "op": "click",
+          "name": "Verify",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "That code is incorrect. Please try again."
+        },
+        {
+          "type": "heading",
+          "text": "Enter your one-time code"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW05",
+      "feature": "Access control",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/search.html without logging in first and wait for the page to finish loading.",
+      "expectedResult": "Instead of the search page, the page heading is \"Log in to Northwind Stays\". The address bar shows login.html. The Email field is visible. The Password field is visible.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "search.html"
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Log in to Northwind Stays"
+        },
+        {
+          "type": "page",
+          "path": "login.html"
+        },
+        {
+          "type": "field",
+          "label": "Email"
+        },
+        {
+          "type": "field",
+          "label": "Password"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW06",
+      "feature": "Logout",
+      "smoke": true,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/search.html?as=tester. Click the Log out button.",
+      "expectedResult": "After clicking Log out, \"You have been logged out.\" is shown on the page. The page heading is \"Log in to Northwind Stays\". The address bar shows login.html.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "search.html?as=tester"
+        },
+        {
+          "op": "click",
+          "name": "Log out",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "You have been logged out."
+        },
+        {
+          "type": "heading",
+          "text": "Log in to Northwind Stays"
+        },
+        {
+          "type": "page",
+          "path": "login.html"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW07",
+      "feature": "Search validation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/search.html?as=tester. Select Singapore in the City dropdown, type 2027-03-12 into the Check-in (DD/MM/YYYY) field, type 15/03/2027 into the Check-out (DD/MM/YYYY) field, then click the Search button.",
+      "expectedResult": "\"Enter dates as DD/MM/YYYY.\" is shown on the page. The page heading is \"Find a stay\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "search.html?as=tester"
+        },
+        {
+          "op": "select",
+          "label": "City",
+          "option": "Singapore"
+        },
+        {
+          "op": "fill",
+          "label": "Check-in (DD/MM/YYYY)",
+          "value": "2027-03-12"
+        },
+        {
+          "op": "fill",
+          "label": "Check-out (DD/MM/YYYY)",
+          "value": "15/03/2027"
+        },
+        {
+          "op": "click",
+          "name": "Search",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Enter dates as DD/MM/YYYY."
+        },
+        {
+          "type": "heading",
+          "text": "Find a stay"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW08",
+      "feature": "Search validation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/search.html?as=tester. Select Singapore in the City dropdown, type 15/03/2027 into the Check-in (DD/MM/YYYY) field, type 12/03/2027 into the Check-out (DD/MM/YYYY) field, then click the Search button.",
+      "expectedResult": "\"Check-out must be after check-in.\" is shown on the page. The page heading is \"Find a stay\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "search.html?as=tester"
+        },
+        {
+          "op": "select",
+          "label": "City",
+          "option": "Singapore"
+        },
+        {
+          "op": "fill",
+          "label": "Check-in (DD/MM/YYYY)",
+          "value": "15/03/2027"
+        },
+        {
+          "op": "fill",
+          "label": "Check-out (DD/MM/YYYY)",
+          "value": "12/03/2027"
+        },
+        {
+          "op": "click",
+          "name": "Search",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Check-out must be after check-in."
+        },
+        {
+          "type": "heading",
+          "text": "Find a stay"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW09",
+      "feature": "Search validation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/search.html?as=tester. Select Singapore in the City dropdown, type 01/03/2025 into the Check-in (DD/MM/YYYY) field, type 03/03/2025 into the Check-out (DD/MM/YYYY) field, then click the Search button.",
+      "expectedResult": "\"Check-in date cannot be in the past.\" is shown on the page. The page heading is \"Find a stay\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "search.html?as=tester"
+        },
+        {
+          "op": "select",
+          "label": "City",
+          "option": "Singapore"
+        },
+        {
+          "op": "fill",
+          "label": "Check-in (DD/MM/YYYY)",
+          "value": "01/03/2025"
+        },
+        {
+          "op": "fill",
+          "label": "Check-out (DD/MM/YYYY)",
+          "value": "03/03/2025"
+        },
+        {
+          "op": "click",
+          "name": "Search",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Check-in date cannot be in the past."
+        },
+        {
+          "type": "heading",
+          "text": "Find a stay"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW10",
+      "feature": "Search",
+      "smoke": true,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/search.html?as=tester. Select Singapore in the City dropdown, type 12/03/2027 into the Check-in (DD/MM/YYYY) field, type 15/03/2027 into the Check-out (DD/MM/YYYY) field, select 2 in the Guests dropdown, select 1 in the Rooms dropdown, then click the Search button.",
+      "expectedResult": "After clicking Search, the page heading is \"Search results\". The results line reads \"4 properties found\". Exactly 4 property cards are shown (in any order): Northwind Marina Suites, Lantern Quay Hotel, Kestrel Garden Inn and Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "search.html?as=tester"
+        },
+        {
+          "op": "select",
+          "label": "City",
+          "option": "Singapore"
+        },
+        {
+          "op": "fill",
+          "label": "Check-in (DD/MM/YYYY)",
+          "value": "12/03/2027"
+        },
+        {
+          "op": "fill",
+          "label": "Check-out (DD/MM/YYYY)",
+          "value": "15/03/2027"
+        },
+        {
+          "op": "select",
+          "label": "Guests",
+          "option": "2"
+        },
+        {
+          "op": "select",
+          "label": "Rooms",
+          "option": "1"
+        },
+        {
+          "op": "click",
+          "name": "Search",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Search results"
+        },
+        {
+          "type": "count",
+          "text": "4 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Northwind Marina Suites",
+            "Lantern Quay Hotel",
+            "Kestrel Garden Inn",
+            "Tidewater Residences"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW11",
+      "feature": "Search",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/search.html?as=tester. Select Singapore in the City dropdown, type 12/03/2027 into the Check-in (DD/MM/YYYY) field, type 15/03/2027 into the Check-out (DD/MM/YYYY) field, select 5 in the Guests dropdown, then click the Search button.",
+      "expectedResult": "After clicking Search, the results line reads \"1 property found\". The only property card shown is Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "search.html?as=tester"
+        },
+        {
+          "op": "select",
+          "label": "City",
+          "option": "Singapore"
+        },
+        {
+          "op": "fill",
+          "label": "Check-in (DD/MM/YYYY)",
+          "value": "12/03/2027"
+        },
+        {
+          "op": "fill",
+          "label": "Check-out (DD/MM/YYYY)",
+          "value": "15/03/2027"
+        },
+        {
+          "op": "select",
+          "label": "Guests",
+          "option": "5"
+        },
+        {
+          "op": "click",
+          "name": "Search",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "1 property found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Tidewater Residences"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW12",
+      "feature": "Filter: min price",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Type 200 into the Min price per night (S$) field, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"2 properties found\". Exactly 2 property cards are shown (in any order): Northwind Marina Suites and Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Min price per night (S$)",
+          "value": "200"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "2 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Northwind Marina Suites",
+            "Tidewater Residences"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW13",
+      "feature": "Filter: max price",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Type 200 into the Max price per night (S$) field, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"3 properties found\". Exactly 3 property cards are shown (in any order): Lantern Quay Hotel, Kestrel Garden Inn and Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Max price per night (S$)",
+          "value": "200"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "3 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Lantern Quay Hotel",
+            "Kestrel Garden Inn",
+            "Tidewater Residences"
+          ]
+        }
+      ],
+      "failsOn": [
+        "v2"
+      ]
+    },
+    {
+      "id": "NW14",
+      "feature": "Filter: max price",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Bangkok&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Type 200 into the Max price per night (S$) field, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"2 properties found\". Exactly 2 property cards are shown (in any order): Teakwood Serviced Suites and Lotus Lane Hotel.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Bangkok&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Max price per night (S$)",
+          "value": "200"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "2 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Teakwood Serviced Suites",
+            "Lotus Lane Hotel"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW15",
+      "feature": "Filter: star rating",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the 5 stars checkbox, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"4 properties found\". Exactly 4 property cards are shown (in any order): Northwind Marina Suites, Orchid River Hotel, Northwind Skyline Tokyo and Foxglove Square Hotel.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "5 stars"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "4 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Northwind Marina Suites",
+            "Orchid River Hotel",
+            "Northwind Skyline Tokyo",
+            "Foxglove Square Hotel"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW16",
+      "feature": "Filter: property type",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the Serviced apartment checkbox, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"2 properties found\". Exactly 2 property cards are shown (in any order): Northwind Marina Suites and Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "Serviced apartment"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "2 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Northwind Marina Suites",
+            "Tidewater Residences"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW17",
+      "feature": "Filter: amenities",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the Pet friendly checkbox, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"5 properties found\". Exactly 5 property cards are shown (in any order): Tidewater Residences, Teakwood Serviced Suites, Maple Crossing Apartments, Wattle Bay Apartments and Bramblewick Apartments.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "Pet friendly"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "5 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Tidewater Residences",
+            "Teakwood Serviced Suites",
+            "Maple Crossing Apartments",
+            "Wattle Bay Apartments",
+            "Bramblewick Apartments"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW18",
+      "feature": "Filter: amenities",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the Pool checkbox, tick the Gym checkbox, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters (only properties with both Pool and Gym), the results line reads \"4 properties found\". Exactly 4 property cards are shown (in any order): Northwind Marina Suites, Saffron Hill Hotel, Orchid River Hotel and Northwind Skyline Tokyo.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "Pool"
+        },
+        {
+          "op": "tick",
+          "label": "Gym"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "4 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Northwind Marina Suites",
+            "Saffron Hill Hotel",
+            "Orchid River Hotel",
+            "Northwind Skyline Tokyo"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW19",
+      "feature": "Filter: combined",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the 3 stars checkbox, tick the Pool checkbox, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the page shows \"No properties match your filters.\" No property cards are shown.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "3 stars"
+        },
+        {
+          "op": "tick",
+          "label": "Pool"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "No properties match your filters."
+        },
+        {
+          "type": "results",
+          "names": []
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW20",
+      "feature": "Filter: clear filters",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the 4 stars checkbox, tick the Pool checkbox, click the Apply filters button, then check the results line. Next, click the Clear filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"1 property found\". After clicking Clear filters, the 4 stars checkbox is unticked. The Pool checkbox is unticked. The results line reads \"4 properties found\". Exactly 4 property cards are shown (in any order): Northwind Marina Suites, Lantern Quay Hotel, Kestrel Garden Inn and Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "4 stars"
+        },
+        {
+          "op": "tick",
+          "label": "Pool"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        },
+        {
+          "op": "check",
+          "say": "check the results line",
+          "lead": "After clicking Apply filters",
+          "checks": [
+            {
+              "type": "count",
+              "text": "1 property found"
+            }
+          ]
+        },
+        {
+          "op": "click",
+          "name": "Clear filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "checked",
+          "label": "4 stars",
+          "value": false
+        },
+        {
+          "type": "checked",
+          "label": "Pool",
+          "value": false
+        },
+        {
+          "type": "count",
+          "text": "4 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Northwind Marina Suites",
+            "Lantern Quay Hotel",
+            "Kestrel Garden Inn",
+            "Tidewater Residences"
+          ]
+        }
+      ],
+      "failsOn": [
+        "v2"
+      ]
+    },
+    {
+      "id": "NW21",
+      "feature": "Sort",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Select Price (high to low) in the Sort by dropdown, then select Recommended in the Sort by dropdown.",
+      "expectedResult": "With Recommended selected, the first property card is Northwind Marina Suites and the last property card is Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "select",
+          "label": "Sort by",
+          "option": "Price (high to low)"
+        },
+        {
+          "op": "select",
+          "label": "Sort by",
+          "option": "Recommended"
+        }
+      ],
+      "checks": [
+        {
+          "type": "first_last",
+          "first": "Northwind Marina Suites",
+          "last": "Tidewater Residences"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW22",
+      "feature": "Sort",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Select Price (low to high) in the Sort by dropdown.",
+      "expectedResult": "After choosing Price (low to high), the first property card is Kestrel Garden Inn and the last property card is Northwind Marina Suites.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "select",
+          "label": "Sort by",
+          "option": "Price (low to high)"
+        }
+      ],
+      "checks": [
+        {
+          "type": "first_last",
+          "first": "Kestrel Garden Inn",
+          "last": "Northwind Marina Suites"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW23",
+      "feature": "Sort",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Select Price (high to low) in the Sort by dropdown.",
+      "expectedResult": "After choosing Price (high to low), the first property card is Northwind Marina Suites and the last property card is Kestrel Garden Inn.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "select",
+          "label": "Sort by",
+          "option": "Price (high to low)"
+        }
+      ],
+      "checks": [
+        {
+          "type": "first_last",
+          "first": "Northwind Marina Suites",
+          "last": "Kestrel Garden Inn"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW24",
+      "feature": "Sort",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Select Rating (high to low) in the Sort by dropdown.",
+      "expectedResult": "After choosing Rating (high to low), the first property card is Tidewater Residences and the last property card is Kestrel Garden Inn.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "select",
+          "label": "Sort by",
+          "option": "Rating (high to low)"
+        }
+      ],
+      "checks": [
+        {
+          "type": "first_last",
+          "first": "Tidewater Residences",
+          "last": "Kestrel Garden Inn"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW25",
+      "feature": "Property details",
+      "smoke": true,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Click the View details button on the Lantern Quay Hotel card.",
+      "expectedResult": "On the details page, the page heading is \"Lantern Quay Hotel\". \"S$185 per night\" is shown on the page. \"4 stars\" is shown on the page. \"8.7/10\" is shown on the page. \"Nights: 3\" is shown on the page. A \"Book now\" button is shown.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "click_card",
+          "card": "Lantern Quay Hotel",
+          "name": "View details",
+          "role": "link",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Lantern Quay Hotel"
+        },
+        {
+          "type": "shows",
+          "text": "S$185 per night"
+        },
+        {
+          "type": "shows",
+          "text": "4 stars"
+        },
+        {
+          "type": "shows",
+          "text": "8.7/10"
+        },
+        {
+          "type": "shows",
+          "text": "Nights: 3"
+        },
+        {
+          "type": "button",
+          "name": "Book now",
+          "present": true
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW26",
+      "feature": "Booking",
+      "smoke": true,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/details.html?as=tester&id=northwind-marina-suites&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Click the Book now button. On the booking page, check the booking summary, type Alex Tester into the Full name field, type alex.tester@northwind.test into the Email field, type 91234567 into the Mobile number (+65) field, then click the Confirm booking button.",
+      "expectedResult": "Before confirming, on the booking page, \"Nights: 3\" is shown on the page. \"Rooms: 1\" is shown on the page. \"Total: S$960\" is shown on the page. \"Payment: Pay at property\" is shown on the page. After clicking Confirm booking, the page heading is \"Booking confirmed\". \"Northwind Marina Suites\" is shown on the page. \"Total: S$960\" is shown on the page. \"Payment: Pay at property\" is shown on the page.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "details.html?as=tester&id=northwind-marina-suites&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "click",
+          "name": "Book now",
+          "role": "link",
+          "kind": "button",
+          "nav": true
+        },
+        {
+          "op": "check",
+          "say": "check the booking summary",
+          "lead": "Before confirming, on the booking page",
+          "checks": [
+            {
+              "type": "shows",
+              "text": "Nights: 3"
+            },
+            {
+              "type": "shows",
+              "text": "Rooms: 1"
+            },
+            {
+              "type": "shows",
+              "text": "Total: S$960"
+            },
+            {
+              "type": "shows",
+              "text": "Payment: Pay at property"
+            }
+          ]
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": "Alex Tester"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "91234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Booking confirmed"
+        },
+        {
+          "type": "shows",
+          "text": "Northwind Marina Suites"
+        },
+        {
+          "type": "shows",
+          "text": "Total: S$960"
+        },
+        {
+          "type": "shows",
+          "text": "Payment: Pay at property"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW27",
+      "feature": "Booking",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=2. Click the View details button on the Lantern Quay Hotel card. On the details page, click the Book now button. On the booking page, check the booking summary, type Alex Tester into the Full name field, type alex.tester@northwind.test into the Email field, type 91234567 into the Mobile number (+65) field, then click the Confirm booking button.",
+      "expectedResult": "Before confirming, on the booking page, \"Nights: 3\" is shown on the page. \"Rooms: 2\" is shown on the page. \"Total: S$1,110\" is shown on the page. After clicking Confirm booking, the page heading is \"Booking confirmed\". \"Total: S$1,110\" is shown on the page.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=2"
+        },
+        {
+          "op": "click_card",
+          "card": "Lantern Quay Hotel",
+          "name": "View details",
+          "role": "link",
+          "kind": "button",
+          "nav": true
+        },
+        {
+          "op": "click",
+          "name": "Book now",
+          "role": "link",
+          "kind": "button",
+          "nav": true
+        },
+        {
+          "op": "check",
+          "say": "check the booking summary",
+          "lead": "Before confirming, on the booking page",
+          "checks": [
+            {
+              "type": "shows",
+              "text": "Nights: 3"
+            },
+            {
+              "type": "shows",
+              "text": "Rooms: 2"
+            },
+            {
+              "type": "shows",
+              "text": "Total: S$1,110"
+            }
+          ]
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": "Alex Tester"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "91234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Booking confirmed"
+        },
+        {
+          "type": "shows",
+          "text": "Total: S$1,110"
+        }
+      ],
+      "failsOn": [
+        "v2"
+      ]
+    },
+    {
+      "id": "NW28",
+      "feature": "Booking validation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Leave the Full name field empty, type alex.tester@northwind.test into the Email field, type 91234567 into the Mobile number (+65) field, then click the Confirm booking button.",
+      "expectedResult": "After clicking Confirm booking, \"Enter your full name.\" is shown on the page. The page heading is \"Complete your booking\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": ""
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "91234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Enter your full name."
+        },
+        {
+          "type": "heading",
+          "text": "Complete your booking"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW29",
+      "feature": "Booking validation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Type Alex Tester into the Full name field, type alex.tester.northwind.test into the Email field, type 91234567 into the Mobile number (+65) field, then click the Confirm booking button.",
+      "expectedResult": "After clicking Confirm booking, \"Enter a valid email address.\" is shown on the page. The page heading is \"Complete your booking\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": "Alex Tester"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester.northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "91234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Enter a valid email address."
+        },
+        {
+          "type": "heading",
+          "text": "Complete your booking"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW30",
+      "feature": "Booking validation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Type Alex Tester into the Full name field, type alex.tester@northwind.test into the Email field, type 71234567 into the Mobile number (+65) field, then click the Confirm booking button.",
+      "expectedResult": "After clicking Confirm booking, \"Enter a valid Singapore mobile number.\" is shown on the page. The page heading is \"Complete your booking\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": "Alex Tester"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "71234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Enter a valid Singapore mobile number."
+        },
+        {
+          "type": "heading",
+          "text": "Complete your booking"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW31",
+      "feature": "Confirmation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/book.html?as=tester&id=kestrel-garden-inn&city=Singapore&checkin=20/04/2027&checkout=22/04/2027&guests=2&rooms=1. Type Alex Tester into the Full name field, type alex.tester@northwind.test into the Email field, type 91234567 into the Mobile number (+65) field, then click the Confirm booking button.",
+      "expectedResult": "After clicking Confirm booking, the page heading is \"Booking confirmed\". \"Booking reference: NW-100001\" is shown on the page. \"Kestrel Garden Inn\" is shown on the page. \"Check-in: 20/04/2027\" is shown on the page. \"Check-out: 22/04/2027\" is shown on the page. \"Total: S$240\" is shown on the page.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "book.html?as=tester&id=kestrel-garden-inn&city=Singapore&checkin=20/04/2027&checkout=22/04/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": "Alex Tester"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "91234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Booking confirmed"
+        },
+        {
+          "type": "shows",
+          "text": "Booking reference: NW-100001"
+        },
+        {
+          "type": "shows",
+          "text": "Kestrel Garden Inn"
+        },
+        {
+          "type": "shows",
+          "text": "Check-in: 20/04/2027"
+        },
+        {
+          "type": "shows",
+          "text": "Check-out: 22/04/2027"
+        },
+        {
+          "type": "shows",
+          "text": "Total: S$240"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW32",
+      "feature": "My bookings",
+      "smoke": true,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/book.html?as=tester&id=tidewater-residences&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Type Alex Tester into the Full name field, type alex.tester@northwind.test into the Email field, type 91234567 into the Mobile number (+65) field, then click the Confirm booking button. On the confirmation page, click the Go to My bookings link.",
+      "expectedResult": "On the My bookings page, the page heading is \"My bookings\". \"NW-100001\" is shown on the page. \"Tidewater Residences\" is shown on the page. \"12/03/2027 to 15/03/2027\" is shown on the page. \"S$600\" is shown on the page. \"Confirmed\" is shown on the page. A \"Cancel booking\" button is shown.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "book.html?as=tester&id=tidewater-residences&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": "Alex Tester"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "91234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        },
+        {
+          "op": "click",
+          "name": "Go to My bookings",
+          "role": "link",
+          "kind": "link",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "My bookings"
+        },
+        {
+          "type": "shows",
+          "text": "NW-100001"
+        },
+        {
+          "type": "shows",
+          "text": "Tidewater Residences"
+        },
+        {
+          "type": "shows",
+          "text": "12/03/2027 to 15/03/2027"
+        },
+        {
+          "type": "shows",
+          "text": "S$600"
+        },
+        {
+          "type": "shows",
+          "text": "Confirmed"
+        },
+        {
+          "type": "button",
+          "name": "Cancel booking",
+          "present": true
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW33",
+      "feature": "My bookings",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Type Alex Tester into the Full name field, type alex.tester@northwind.test into the Email field, type 91234567 into the Mobile number (+65) field, then click the Confirm booking button. On the confirmation page, click the Go to My bookings link. On the My bookings page, click the Cancel booking button.",
+      "expectedResult": "After clicking Cancel booking, \"Cancelled\" is shown on the page. \"Confirmed\" is not shown anywhere on the page. No \"Cancel booking\" button is shown.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "book.html?as=tester&id=lantern-quay-hotel&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "fill",
+          "label": "Full name",
+          "value": "Alex Tester"
+        },
+        {
+          "op": "fill",
+          "label": "Email",
+          "value": "alex.tester@northwind.test"
+        },
+        {
+          "op": "fill",
+          "label": "Mobile number (+65)",
+          "value": "91234567"
+        },
+        {
+          "op": "click",
+          "name": "Confirm booking",
+          "role": "button",
+          "kind": "button",
+          "nav": true
+        },
+        {
+          "op": "click",
+          "name": "Go to My bookings",
+          "role": "link",
+          "kind": "link",
+          "nav": true
+        },
+        {
+          "op": "click",
+          "name": "Cancel booking",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "shows",
+          "text": "Cancelled"
+        },
+        {
+          "type": "not_shows",
+          "text": "Confirmed"
+        },
+        {
+          "type": "button",
+          "name": "Cancel booking",
+          "present": false
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW34",
+      "feature": "My bookings",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v1/bookings.html?as=tester.",
+      "expectedResult": "The page heading is \"My bookings\". \"You have no bookings yet.\" is shown on the page.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "bookings.html?as=tester"
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "My bookings"
+        },
+        {
+          "type": "shows",
+          "text": "You have no bookings yet."
+        }
+      ],
+      "failsOn": []
+    }
+  ],
+  "feature": [
+    {
+      "id": "NW35",
+      "feature": "Free cancellation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v2/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the Free cancellation checkbox, then click the Apply filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"3 properties found\". Exactly 3 property cards are shown (in any order): Northwind Marina Suites, Kestrel Garden Inn and Tidewater Residences.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "Free cancellation"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "count",
+          "text": "3 properties found"
+        },
+        {
+          "type": "results",
+          "names": [
+            "Northwind Marina Suites",
+            "Kestrel Garden Inn",
+            "Tidewater Residences"
+          ]
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW36",
+      "feature": "Free cancellation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v2/results.html?as=tester&city=Tokyo&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1 and look at each property card.",
+      "expectedResult": "The Cedar Gate Hotel card shows a \"Free cancellation\" badge. The Maple Crossing Apartments card does not show a \"Free cancellation\" badge. The Northwind Skyline Tokyo card shows a \"Free cancellation\" badge.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Tokyo&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        }
+      ],
+      "checks": [
+        {
+          "type": "card_badge",
+          "card": "Cedar Gate Hotel",
+          "text": "Free cancellation",
+          "present": true
+        },
+        {
+          "type": "card_badge",
+          "card": "Maple Crossing Apartments",
+          "text": "Free cancellation",
+          "present": false
+        },
+        {
+          "type": "card_badge",
+          "card": "Northwind Skyline Tokyo",
+          "text": "Free cancellation",
+          "present": true
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW37",
+      "feature": "Free cancellation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v2/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Click the View details button on the Northwind Marina Suites card.",
+      "expectedResult": "On the details page, the page heading is \"Northwind Marina Suites\". \"Free cancellation\" is shown on the page.",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "click_card",
+          "card": "Northwind Marina Suites",
+          "name": "View details",
+          "role": "link",
+          "kind": "button",
+          "nav": true
+        }
+      ],
+      "checks": [
+        {
+          "type": "heading",
+          "text": "Northwind Marina Suites"
+        },
+        {
+          "type": "shows",
+          "text": "Free cancellation"
+        }
+      ],
+      "failsOn": []
+    },
+    {
+      "id": "NW38",
+      "feature": "Free cancellation",
+      "smoke": false,
+      "whatToDo": "Open https://anishonly121.github.io/northwind-stays/v2/results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1. Tick the Free cancellation checkbox, tick the Hotel checkbox, click the Apply filters button, then check the results line. Next, click the Clear filters button.",
+      "expectedResult": "After clicking Apply filters, the results line reads \"1 property found\". The only property card shown is Kestrel Garden Inn. After clicking Clear filters, the Free cancellation checkbox is unticked. The Hotel checkbox is unticked. The results line reads \"4 properties found\".",
+      "steps": [
+        {
+          "op": "open",
+          "path": "results.html?as=tester&city=Singapore&checkin=12/03/2027&checkout=15/03/2027&guests=2&rooms=1"
+        },
+        {
+          "op": "tick",
+          "label": "Free cancellation"
+        },
+        {
+          "op": "tick",
+          "label": "Hotel"
+        },
+        {
+          "op": "click",
+          "name": "Apply filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        },
+        {
+          "op": "check",
+          "say": "check the results line",
+          "lead": "After clicking Apply filters",
+          "checks": [
+            {
+              "type": "count",
+              "text": "1 property found"
+            },
+            {
+              "type": "results",
+              "names": [
+                "Kestrel Garden Inn"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "click",
+          "name": "Clear filters",
+          "role": "button",
+          "kind": "button",
+          "nav": false
+        }
+      ],
+      "checks": [
+        {
+          "type": "checked",
+          "label": "Free cancellation",
+          "value": false
+        },
+        {
+          "type": "checked",
+          "label": "Hotel",
+          "value": false
+        },
+        {
+          "type": "count",
+          "text": "4 properties found"
+        }
+      ],
+      "failsOn": []
+    }
+  ]
+}

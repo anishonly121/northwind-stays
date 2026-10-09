@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-page="search" data-auth="required">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?b=1.1.0">
+  <script src="data.js?b=1.1.0"></script>
+  <script src="app.js?b=1.1.0"></script>
+  <title>Find a stay | Northwind Stays</title>
+</head>
+<body>
+<div class="test-banner" id="test-banner" data-testid="test-banner" role="note">Northwind Stays is a fictional test website for UAT practice. No real bookings, payments or personal data.</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" id="brand" href="search.html"><svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="#17496b"/><path d="M9.5 23V9.5l13 13V9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="7.5" r="2.5" fill="#f2b33d"/></svg><span class="brand-name">Northwind Stays</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <span class="signed-in" id="signed-in-as" data-testid="signed-in-as"></span>
+      <a href="search.html" id="nav-search" data-testid="nav-search">Search</a>
+      <a href="bookings.html" id="nav-bookings" data-testid="nav-bookings">My bookings</a>
+      <button type="button" class="btn btn-secondary btn-small" id="logout-button" data-testid="logout-button">Log out</button>
+    </nav>
+  </div>
+</header>
+<main class="container" id="main">
+  <h1>Find a stay</h1>
+  <form class="panel search-form" id="search-form" data-testid="search-form" autocomplete="off" novalidate>
+    <div class="search-grid">
+      <div class="field field-wide">
+        <label for="city">City</label>
+        <select id="city" name="city" data-testid="search-city">
+          <option value="">All cities</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="checkin">Check-in (DD/MM/YYYY)</label>
+        <input id="checkin" name="checkin" type="text" autocomplete="off" spellcheck="false" data-testid="search-checkin">
+      </div>
+      <div class="field">
+        <label for="checkout">Check-out (DD/MM/YYYY)</label>
+        <input id="checkout" name="checkout" type="text" autocomplete="off" spellcheck="false" data-testid="search-checkout">
+      </div>
+      <div class="field">
+        <label for="guests">Guests</label>
+        <select id="guests" name="guests" data-testid="search-guests">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rooms">Rooms</label>
+        <select id="rooms" name="rooms" data-testid="search-rooms">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+    </div>
+    <p class="error" id="search-error" data-testid="search-error" role="alert" hidden></p>
+    <div class="actions">
+      <button type="submit" class="btn" id="search-button" data-testid="search-button">Search</button>
+    </div>
+  </form>
+</main>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span class="build-label" id="build-label" data-testid="build-label">Build 1.1.0</span>
+    <a href="login.html?reset=1" id="reset-demo-data" data-testid="reset-demo-data">Reset demo data</a>
+  </div>
+</footer>
+</body>
+</html>

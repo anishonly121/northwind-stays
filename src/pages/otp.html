@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-page="otp" data-auth="public">
+<head>
+  {{head}}
+  <title>One-time code | Northwind Stays</title>
+</head>
+<body>
+{{banner}}
+{{header_public}}
+<main class="container page-narrow" id="main">
+  <h1>Enter your one-time code</h1>
+  <p id="otp-intro" data-testid="otp-intro">A one-time code is needed to finish signing in as <strong id="otp-email" data-testid="otp-email"></strong>.</p>
+  <p class="help" id="otp-help" data-testid="otp-help">UAT test code: 123456</p>
+  <form class="panel" id="otp-form" data-testid="otp-form" autocomplete="off" novalidate>
+    <div class="field">
+      <label for="otp-code">One-time code</label>
+      <input id="otp-code" name="otp-code" type="text" inputmode="numeric" autocomplete="off" maxlength="6" data-testid="otp-code">
+    </div>
+    <p class="error" id="otp-error" data-testid="otp-error" role="alert" hidden></p>
+    <div class="actions">
+      <button type="submit" class="btn" id="verify-button" data-testid="verify-button">Verify</button>
+      <a href="login.html" id="back-to-login" data-testid="back-to-login">Back to log in</a>
+    </div>
+  </form>
+</main>
+{{footer}}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-page="bookings" data-auth="required">
+<head>
+  {{head}}
+  <title>My bookings | Northwind Stays</title>
+</head>
+<body>
+{{banner}}
+{{header_app}}
+<main class="container" id="main">
+  <h1>My bookings</h1>
+  <p class="notice" id="bookings-message" data-testid="bookings-message" role="status" hidden></p>
+  <p class="empty" id="bookings-empty" data-testid="bookings-empty" hidden>You have no bookings yet.</p>
+  <table class="bookings-table" id="bookings-table" data-testid="bookings-table" hidden>
+    <thead>
+      <tr>
+        <th scope="col">Reference</th>
+        <th scope="col">Property</th>
+        <th scope="col">Dates</th>
+        <th scope="col">Total</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody id="bookings-body"></tbody>
+  </table>
+</main>
+{{footer}}
+</body>
+</html>
