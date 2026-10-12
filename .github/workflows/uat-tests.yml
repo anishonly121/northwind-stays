@@ -1,0 +1,103 @@
+name: UAT tests
+
+run-name: UAT tests, ${{ inputs.suite || 'agent' }} suite${{ github.event_name == 'push' && ' (tests/agent changed)' || '' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: "Which tests to run: agent = tests/agent, sample = tests/sample"
+        type: choice
+        options:
+          - agent
+          - sample
+        default: agent
+      build:
+        description: "Build under test. Shown in the run summary only; every test opens its own URL"
+        type: choice
+        options:
+          - v1
+          - v2
+        default: v1
+  push:
+    branches:
+      - main
+    paths:
+      - "tests/agent/**"
+
+permissions:
+  contents: read
+
+# One run at a time. A newer run replaces one that is still going, so runs never pile up.
+concurrency:
+  group: uat-tests
+  cancel-in-progress: true
+
+jobs:
+  uat:
+    name: Run UAT tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUITE: ${{ inputs.suite || 'agent' }}
+      BUILD_UNDER_TEST: ${{ inputs.build || 'v1' }}
+      TRIGGER: ${{ github.event_name == 'push' && 'push to tests/agent' || 'manual run' }}
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node LTS
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Run the tests
+        run: npm run "test:${SUITE}"
+
+      - name: Write results to the run summary
+        if: always()
+        run: |
+          {
+            echo "Suite: **${SUITE}** (tests/${SUITE}). Build selected: **${BUILD_UNDER_TEST}**. Started by: ${TRIGGER}."
+            echo ""
+            if [ -f results/results.md ]; then
+              cat results/results.md
+            else
+              echo "No results file was produced. Open the \"Run the tests\" step log to see why."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload results (CSV and Markdown)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: uat-results
+          path: results/
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Upload videos and traces
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-videos
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: warn

@@ -2,5 +2,8 @@ verify/out/
 __pycache__/
 *.pyc
 node_modules/
+playwright-report/
+test-results/
+results/
 ~$*.xlsx
 .claude/

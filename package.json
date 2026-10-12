@@ -1,0 +1,13 @@
+{
+  "name": "northwind-stays",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Fictional hotel booking site used as a controlled UAT target, with a Playwright runner for agent-written tests",
+  "scripts": {
+    "test:agent": "playwright test tests/agent",
+    "test:sample": "playwright test tests/sample"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0"
+  }
+}
