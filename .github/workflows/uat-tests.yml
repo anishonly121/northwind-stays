@@ -36,7 +36,8 @@ concurrency:
 jobs:
   uat:
     name: Run UAT tests
-    runs-on: ubuntu-latest
+    # Pinned: this is the image the pinned Playwright version is tested on.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
       SUITE: ${{ inputs.suite || 'agent' }}
