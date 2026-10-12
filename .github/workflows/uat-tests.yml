@@ -74,7 +74,7 @@ jobs:
             else
               echo "No results file was produced. Open the \"Run the tests\" step log to see why."
             fi
-          } >> "$GITHUB_STEP_SUMMARY"
+          } | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Upload results (CSV and Markdown)
         if: always()
