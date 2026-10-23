@@ -14,6 +14,17 @@ Tests written by the Copilot agent go in this folder. Every push that changes th
 
 A newer run cancels one that is still going, so a "Cancelled" run in the list is normal if you push twice or click Run workflow straight after a push.
 
+## One click on a Windows PC (no GitHub needed)
+
+For testers who don't use GitHub. Set up once per PC: install Node.js LTS from nodejs.org, then download this repo (Code > Download ZIP) and unzip it.
+
+1. In the Test Runner agent's reply, copy the code block.
+2. Double-click `run-agent-tests.bat` in the repo folder. The first run installs Playwright, which takes a few minutes.
+3. It saves the code as `tests/agent/agent-latest.spec.js`, runs it, and prints the summary.
+4. The results table is copied to the clipboard. Paste it into the Test Runner and ask it to read the results. It drafts a bug for each real failure.
+
+`agent-latest.spec.js` stays on the PC (it is in `.gitignore`), so local runs never start the GitHub workflow. For videos and screenshots of the run, open a command prompt in the folder and run `npx playwright show-report`.
+
 ## Rules for the agent's tests
 
 - One test per sheet row, titled `<StepID> <Feature>`, for example `NW13 Filter: max price`. The StepID becomes the StepID column in the results.

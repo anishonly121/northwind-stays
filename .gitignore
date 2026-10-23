@@ -7,3 +7,6 @@ test-results/
 results/
 ~$*.xlsx
 .claude/
+
+# Written by run-agent-tests.bat for local runs
+tests/agent/agent-latest.spec.js

@@ -64,6 +64,8 @@ node verify/verify.js --live https://USERNAME.github.io/northwind-stays
 
 The Copilot agent turns sheet rows into `@playwright/test` code, one test per row, titled `<StepID> <Feature>`. Put that code in `tests/agent/` as a `.spec.js` file and push. The **UAT tests** workflow runs it in GitHub Actions and shows a results table on the run's Summary page. Full steps and the rules for the tests are in [tests/agent/README.md](tests/agent/README.md).
 
+On a Windows PC without GitHub, copy the agent's code and double-click `run-agent-tests.bat`. It runs the tests and copies the results table to the clipboard for the agent to read.
+
 ```bash
 npm ci
 ```
